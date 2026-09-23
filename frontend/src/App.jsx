@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { api, session } from "./api.js";
 import Admin from "./Admin.jsx";
 import Stats from "./Stats.jsx";
+import Swap from "./Swap.jsx";
 import Wheel from "./Wheel.jsx";
 import {
   enableNotifications,
@@ -149,7 +150,7 @@ function Home({ person, vapidKey, onSignOut }) {
         ))}
       </div>
 
-      {tab === "week" && <ThisWeek person={person} />}
+      {tab === "week" && <ThisWeek person={person} isAdmin={isAdmin} />}
       {tab === "rotation" && <RotationTable />}
       {tab === "stats" && <Stats />}
       {tab === "setup" && isAdmin && <Admin />}
@@ -160,7 +161,7 @@ function Home({ person, vapidKey, onSignOut }) {
   );
 }
 
-function ThisWeek({ person }) {
+function ThisWeek({ person, isAdmin }) {
   const [week, setWeek] = useState(null);
   const [error, setError] = useState("");
 
@@ -281,6 +282,17 @@ function ThisWeek({ person }) {
           </div>
         )}
       </div>
+
+      {isAdmin ? (
+        <Swap weekIndex={week.weekIndex} weekLabel={weekLabel} onDone={load} />
+      ) : (
+        <div className="panel">
+          <h3>Away this week?</h3>
+          <p className="muted">
+            Ask in the group chat and whoever runs the schedule will swap you with someone.
+          </p>
+        </div>
+      )}
     </>
   );
 }
