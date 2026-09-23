@@ -69,7 +69,7 @@ export default function Wheel({ tasks, resting, weekLabel, colors, highlightTask
               textAnchor="middle"
               fontSize="13"
               fontWeight="700"
-              fill={isRest ? "var(--ink)" : "#1E2B3A"}
+              fill={isRest ? "var(--ink)" : "#16212C"}
             >
               {`${s.done ? "✓ " : ""}${s.names.length ? shorten(s.names.join(", "), 12) : "Nobody"}`}
             </text>
@@ -78,7 +78,7 @@ export default function Wheel({ tasks, resting, weekLabel, colors, highlightTask
               y={ty + 12}
               textAnchor="middle"
               fontSize="10"
-              fill={isRest ? "var(--muted)" : "#1E2B3A"}
+              fill={isRest ? "var(--muted)" : "#16212C"}
             >
               {shorten(s.label, 15)}
             </text>
