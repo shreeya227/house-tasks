@@ -1,10 +1,10 @@
 # Stage 1: build the React frontend.
 # Run from the REPO ROOT as build context, so set Render's Dockerfile Path to
 # backend/Dockerfile and leave Root Directory empty.
-FROM node:20-slim AS frontend
+FROM node:20 AS frontend
 WORKDIR /web
 COPY frontend/package.json frontend/package-lock.json* ./
-RUN npm install
+RUN npm install --no-audit --no-fund --legacy-peer-deps
 COPY frontend/ ./
 RUN npm run build
 
