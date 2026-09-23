@@ -1,5 +1,6 @@
 /* ---------- tokens ---------- */
 :root {
+  color-scheme: light dark;
   --paper: #eef3f6;
   --card: #ffffff;
   --ink: #1e2b3a;
@@ -10,6 +11,7 @@
   --tape: #f2c14e;
   --warn: #a6422b;
   --rest: #e3e8ec;
+  --track: #d3dce3;
   --heavy: #efa08c;
   --medium: #8db3e2;
   --light: #8fc9ae;
@@ -29,8 +31,35 @@
     --accent: #7cc4ae;
     --accent-ink: #0d1a15;
     --warn: #f09a84;
-    --rest: #34424f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+    --rest: #3a4856;
+    /* Softer task colours: the light pastels glare against a dark page. */
+    --heavy: #c9705c;
+    --medium: #5f84b4;
+    --light: #5f9c80;
+    /* Chart background bars need to sit above the page, not below it. */
+    --track: #34424f;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 28px rgba(0, 0, 0, 0.35);
+  }
+
+  /* The wheel, swatches and name tags are drawn with fixed pastels so their
+     dark labels stay readable. Knocking them back keeps them from glowing. */
+  .wheel path,
+  .tag,
+  .chip,
+  .swatch {
+    filter: brightness(0.88) saturate(0.92);
+  }
+
+  body {
+    background:
+      radial-gradient(1100px 500px at 15% -10%, rgba(242, 193, 78, 0.07), transparent 70%),
+      var(--paper);
+  }
+
+  select,
+  input[type="text"],
+  input[type="date"] {
+    background: color-mix(in srgb, var(--card) 70%, black);
   }
 }
 
@@ -88,14 +117,14 @@ header.top p { margin: 6px 0 0; color: var(--muted); }
 
 /* ---------- hero: your task this week ---------- */
 .hero {
-  background: linear-gradient(140deg, var(--ink), color-mix(in srgb, var(--ink) 78%, var(--accent)));
+  background: linear-gradient(140deg, #1e2b3a, #2f6f5e);
   color: #f4f8fa;
   border-radius: 20px;
   padding: 26px 22px;
   margin-bottom: 16px;
   box-shadow: var(--shadow);
 }
-.hero-rest { background: linear-gradient(140deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--ink))); }
+.hero-rest { background: linear-gradient(140deg, #2f6f5e, #1e2b3a); }
 .hero-kicker { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
 .hero-title { font-size: clamp(26px, 7vw, 38px); font-weight: 800; }
 .hero-sub { margin: 10px 0 0; opacity: 0.85; }
@@ -138,12 +167,12 @@ header.top p { margin: 6px 0 0; color: var(--muted); }
 
 .chip {
   display: inline-block;
+  color: #16212c;
   margin-left: 8px;
   padding: 1px 8px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
-  color: #1e2b3a;
   background: var(--medium);
 }
 .chip-heavy { background: var(--heavy); }
@@ -188,7 +217,7 @@ table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14p
 th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
 th { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 600; font-size: 13px; color: var(--muted); }
 tr.now td { background: color-mix(in srgb, var(--tape) 18%, transparent); }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 8px; color: #1e2b3a; font-weight: 700; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 8px; color: #16212c; font-weight: 700; }
 
 /* ---------- stats ---------- */
 .big-stat { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-size: 56px; font-weight: 800; margin: 4px 0 0; }
@@ -197,20 +226,20 @@ tr.now td { background: color-mix(in srgb, var(--tape) 18%, transparent); }
 .cols { display: flex; align-items: flex-end; gap: 10px; height: 160px; margin: 18px 0 6px; }
 .col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; }
 .col-stack { position: relative; width: 100%; max-width: 34px; flex: 1; display: flex; align-items: flex-end; }
-.col-assigned { position: absolute; bottom: 0; width: 100%; background: var(--line); border-radius: 8px 8px 0 0; }
+.col-assigned { position: absolute; bottom: 0; width: 100%; background: var(--track); border-radius: 8px 8px 0 0; }
 .col-done { position: absolute; bottom: 0; width: 100%; background: var(--accent); border-radius: 8px 8px 0 0; }
 .col-label { font-size: 11px; color: var(--muted); margin-top: 8px; white-space: nowrap; }
 
 .legend { display: flex; align-items: center; gap: 6px; }
 .key { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
-.key-assigned { background: var(--line); }
+.key-assigned { background: var(--track); }
 .key-done { background: var(--accent); margin-left: 10px; }
 
 .bars { margin-top: 12px; }
 .bar-row { display: grid; grid-template-columns: 90px 1fr 84px; gap: 10px; align-items: center; padding: 7px 0; }
 .bar-name { font-weight: 700; font-size: 14px; }
-.bar-track { position: relative; height: 14px; background: color-mix(in srgb, var(--line) 50%, transparent); border-radius: 999px; }
-.bar-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--line); border-radius: 999px; }
+.bar-track { position: relative; height: 14px; background: color-mix(in srgb, var(--track) 55%, transparent); border-radius: 999px; }
+.bar-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--track); border-radius: 999px; }
 .bar-done { position: absolute; left: 0; top: 0; height: 100%; background: var(--accent); border-radius: 999px; }
 .bar-value { font-size: 13px; text-align: right; }
 
