@@ -1,0 +1,17 @@
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/HouseTasksApplication.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/config/AppConfig.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/config/DemoData.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/config/Tokens.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/CompletionRepo.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/Entities.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/HouseholdRepo.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/PersonRepo.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/PushSubscriptionRepo.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/SwapRepo.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/domain/TaskRepo.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/push/WebPushSender.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/push/WeeklyNotificationJob.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/rotation/Rotation.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/rotation/RotationService.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/web/AdminController.java
+/Users/shreeyapandey/Downloads/housetasks 2/backend/src/main/java/com/housetasks/web/ApiController.java

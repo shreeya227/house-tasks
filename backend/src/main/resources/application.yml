@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/housetasks}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+server:
+  port: ${PORT:8080}
+
+housetasks:
+  # Generated once with: npx web-push generate-vapid-keys
+  vapid:
+    public-key: ${VAPID_PUBLIC_KEY:}
+    private-key: ${VAPID_PRIVATE_KEY:}
+    subject: ${VAPID_SUBJECT:mailto:you@example.com}
+  # HMAC secret for the lightweight person tokens
+  token-secret: ${TOKEN_SECRET:change-me-in-production}
+  # Cron for the weekly push. Second Minute Hour Day Month Weekday
+  weekly-cron: ${WEEKLY_CRON:0 0 8 * * MON}
+  timezone: ${APP_TIMEZONE:America/New_York}
+
+logging:
+  level:
+    com.housetasks: DEBUG
