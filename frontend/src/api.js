@@ -40,8 +40,9 @@ async function request(path, { method = "GET", body, auth = true } = {}) {
     const text = await res.text().catch(() => "");
     throw new Error(text || `Request failed (${res.status})`);
   }
-  if (res.status === 204) return null;
-  return res.json();
+  // Some replies (204, and the 201 from a swap) have no body. Only parse when there is one.
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
 }
 
 export const api = {

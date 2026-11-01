@@ -3,6 +3,13 @@ spring:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/housetasks}
     username: ${DATABASE_USER:postgres}
     password: ${DATABASE_PASSWORD:postgres}
+    # Neon closes idle connections and sleeps after a few minutes. Don't keep idle
+    # connections around for it to close, and replace each one within 3 minutes.
+    hikari:
+      minimum-idle: 0
+      idle-timeout: 60000
+      max-lifetime: 180000
+      maximum-pool-size: 5
   jpa:
     hibernate:
       ddl-auto: validate
