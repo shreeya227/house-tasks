@@ -72,10 +72,21 @@ npm run dev
 Open http://localhost:3000/?house=burlington7 and pick your name.
 
 ```bash
-npm test            # rotation, dates and token tests
+npm test            # rotation, token, and API error-handling tests
 npm run typecheck
 npm run build       # what Vercel runs
 ```
+
+The Monday job's "exactly once per person per week" promise is tested against a real
+Postgres, including three overlapping runs at the same moment. Those tests run when
+`TEST_DATABASE_URL` points at a throwaway database (they wipe it), and are skipped otherwise:
+
+```bash
+TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/house_tasks_test npm test
+```
+
+GitHub Actions runs typecheck, all tests (with a Postgres 16 service), and the production
+build on every push and pull request (`.github/workflows/ci.yml`).
 
 ## API
 
